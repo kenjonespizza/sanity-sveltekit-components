@@ -1,5 +1,6 @@
 <script context="module">
    export async function load({ params, fetch }) {
+     // Grab the Sanity data based on the slug
      const resourceUrl = `/api/pages/${params.slug}`;
      const res = await fetch(resourceUrl);
      const {data} = await res.json()
@@ -29,7 +30,7 @@
 </style>
 
 <h1>Page: {page.name}</h1>
-
+<!-- Loop over the modules.. -->
 {#each page.modules as module}
   <BlockRenderer {module}/>
 {/each}

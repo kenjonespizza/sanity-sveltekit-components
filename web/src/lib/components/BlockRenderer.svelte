@@ -1,4 +1,5 @@
 <script>
+  // This function is where the magic happens
   import getComponent from '$lib/BlockResolver'
   
   export let module
