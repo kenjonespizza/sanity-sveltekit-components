@@ -1,27 +1,25 @@
-export default {
+import {defineField, defineType} from 'sanity'
+
+export const ctaType = defineType({
   name: 'cta',
   title: 'CTA',
   type: 'object',
   fields: [
-    {
+    defineField({
       name: 'heading',
-      title: 'Heading',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       name: 'text',
-      title: 'Text',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       name: 'buttonText',
-      title: 'Button Text',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       name: 'url',
-      title: 'URL',
       type: 'url',
-    },
-  ]
-}
+    }),
+  ],
+})

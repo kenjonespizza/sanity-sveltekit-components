@@ -1,76 +1,70 @@
 import {UserIcon} from '@sanity/icons'
+import {defineField, defineType} from 'sanity'
 
-export default {
+export const authorType = defineType({
   name: 'author',
+  title: 'Author',
   type: 'document',
   icon: UserIcon,
-  title: 'Author',
   fields: [
-    {
+    defineField({
       name: 'name',
       type: 'string',
-      title: 'Name',
-      validation: (Rule) => Rule.required()
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'slug',
       type: 'slug',
-      title: 'Slug',
       description: 'Address of this author in the website',
       options: {
         source: 'name',
-        maxLength: 96
+        maxLength: 96,
       },
-      validation: (Rule) => Rule.required()
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'image',
       type: 'image',
       title: "Author's photo",
       options: {
-        hotspot: true
+        hotspot: true,
       },
-      // Images can have extra fields to annotate the image with supporting content
       fields: [
-        {
+        defineField({
           name: 'alt',
           type: 'string',
           title: 'Alternative text',
-          description: 'Important for SEO and accessiblity.',
-          validation: (Rule) => Rule.error('You have to fill out the alternative text.').required(),
-          options: {
-            isHighlighted: true
-          }
-        }
-      ]
-    },
-    {
+          description: 'Important for SEO and accessibility.',
+          validation: (rule) =>
+            rule.error('You have to fill out the alternative text.').required(),
+        }),
+      ],
+    }),
+    defineField({
       name: 'bio',
       type: 'array',
       title: 'Biography',
       of: [
         {
           type: 'block',
-          title: 'Block',
-          // Only allow paragraphs to be written in the bio
           styles: [{title: 'Normal', value: 'normal'}],
           lists: [],
           marks: {
             decorators: [
               {title: 'Strong', value: 'strong'},
               {title: 'Emphasis', value: 'em'},
-              {title: 'Code', value: 'code'}
-            ]
-          }
-        }
-      ]
-    }
+              {title: 'Code', value: 'code'},
+            ],
+          },
+        },
+      ],
+    }),
   ],
   preview: {
     select: {
       title: 'name',
       subtitle: 'slug.current',
-      media: 'image'
-    }
-  }
-}
+      media: 'image',
+    },
+  },
+})
