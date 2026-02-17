@@ -1,7 +1,3 @@
-<script>
-
-</script>
-
-<section class="py-24 text-center bg-red-700">
-  <h1 class="text-4xl text-white">Block doesnt exist</h1>
+<section class="bg-red-700 py-24 text-center">
+	<h1 class="text-4xl text-white">Block doesn't exist</h1>
 </section>
